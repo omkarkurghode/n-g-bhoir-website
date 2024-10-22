@@ -40,8 +40,7 @@ Deployment
 Deployment on Netlify:
 The site is hosted on Netlify. Any push to the main branch will automatically deploy the site.
 
-You can view the live site at:
-https://your-site-name.netlify.app
+You can view the live site at: (https://ngbhoir.netlify.app/)
 
 To manually deploy:
 
