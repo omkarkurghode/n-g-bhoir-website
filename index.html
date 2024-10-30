@@ -12,15 +12,13 @@
     
     <script src="https://kit.fontawesome.com/805903b53d.js" crossorigin="anonymous"></script>    
 
-    <title>N.G. Bhoir Construction</title>
+    <title>N.G. Bhoir</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* font-family: "Lato", sans-serif; */
             font-family: "Montserrat", sans-serif;
         }
         html {
@@ -1303,6 +1301,64 @@
         }
 
     </style>
+    <style>
+        .modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal content styling */
+.modal-content {
+    background: #fff;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.close-button {
+    float: right;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-top: 0;
+}
+
+.modal input, .modal select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFA722;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal button:hover {
+    background-color: #FF8800;
+}
+    </style>
 </head>
 <body>
     <header> 
@@ -1333,7 +1389,7 @@
                 </li>
             </ul>
 
-            <a href="#" class="btn-ServiceRequest">Request Service</a>
+            <button  class="btn-ServiceRequest" id="request-service-header" onclick="openServiceModal()">Request Service</button>
         </nav>
     </header>
     <section class="hero">
@@ -1380,7 +1436,7 @@
                     </div>
                     <span>Civil Work</span>
                     <p>We specialize in building construction, infrastructure projects, and other civil engineering solutions tailored to our clients' needs.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Civil Work')">Request Service</a>
                 </div>
     
                 <!-- Service 2: Earthwork -->
@@ -1390,7 +1446,7 @@
                     </div>
                     <span>Earthwork</span>
                     <p>Our expertise includes excavation, ground leveling, and soil improvement for a wide range of construction and infrastructure projects.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Earthwork')">Request Service</a>
                 </div>
     
                 <!-- Service 3: Fabrication -->
@@ -1400,7 +1456,7 @@
                     </div>
                     <span>Fabrication</span>
                     <p>We offer professional fabrication services, including structural assembly and metalworks for construction projects.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Fabrication')">Request Service</a>
                 </div>
     
                 <!-- Service 4: Excavation -->
@@ -1410,7 +1466,7 @@
                     </div>
                     <span>Excavation</span>
                     <p>With state-of-the-art equipment, we handle large-scale excavation projects, ensuring safe and efficient site preparation.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Excavation')">Request Service</a>
                 </div>
     
                 <!-- Service 5: Road and Infrastructure -->
@@ -1420,7 +1476,7 @@
                     </div>
                     <span>Road and Infrastructure</span>
                     <p>We specialize in road construction and infrastructure development, ensuring quality and safety in every project.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Road and Infrastructure')">Request Service</a>
                 </div>
     
                 <!-- Service 6: Crushing and Screening -->
@@ -1430,7 +1486,7 @@
                     </div>
                     <span>Crushing & Screening</span>
                     <p>We provide crushing and screening services for large infrastructure projects, ensuring quality materials for every build.</p>
-                    <a href="#contact" class="cta-button">Request Service</a>
+                    <a href="#contact" class="cta-button" onclick="openServiceModal('Crushing and Screening')">Request Service</a>
                 </div>
             </div>
         </div>
@@ -1794,6 +1850,38 @@
 
         </div>
     </section>
+
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeServiceModal()">&times;</span>
+            <h2>Request a Service</h2>
+            <form id="service-request-form">
+                <label for="request-name">Name</label>
+                <input type="text" id="request-name" name="request-name" required>
+    
+                <label for="request-phone">Phone Number</label>
+                <input type="text" id="request-phone" name="request-phone" required pattern="\d{10}" title="Please enter a valid 10-digit phone number">
+    
+                <label for="request-email">Email</label>
+                <input type="email" id="request-email" name="request-email" required>
+    
+                <label for="request-service">Service Type</label>
+                <select id="request-service" name="request-service">
+                    <option value="Civil Work">Civil Work</option>
+                    <option value="Earthwork">Earthwork</option>
+                    <option value="Fabrication">Fabrication</option>
+                    <option value="Excavation">Excavation</option>
+                    <option value="Road and Infrastructure">Road and Infrastructure</option>
+                    <option value="Crushing and Screening">Crushing and Screening</option>
+                </select>
+    
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+
+
     <footer>
         <div class="footer-wrapper">
 
@@ -2010,6 +2098,50 @@
 
         // Attach the validateForm function to form submission
         document.getElementById("contact-form").addEventListener("submit", validateForm);
+
+    </script>
+    <script>
+        // Function to open the modal and set the service type if specified
+        function openServiceModal(serviceType = "") {
+            document.getElementById("service-modal").style.display = "flex";
+            if (serviceType) {
+                document.getElementById("request-service").value = serviceType;
+            }
+        }
+
+        // Function to close the modal
+        function closeServiceModal() {
+            document.getElementById("service-modal").style.display = "none";
+        }
+
+        // Handle form submission and send data via EmailJS
+        document.getElementById("service-request-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('request-name').value;
+            const phone = document.getElementById('request-phone').value;
+            const email = document.getElementById('request-email').value;
+            const service = document.getElementById('request-service').value;
+
+            // Send data using EmailJS
+            emailjs.send("service_387dvie", "template_ovcbbhp", {
+                request_name: name,
+                request_phone: phone,
+                request_email: email,
+                request_service: service
+            })
+            .then((response) => {
+                alert("Your request has been submitted! You will receive a call or email regarding the same.");
+                document.getElementById("service-request-form").reset();
+                closeServiceModal();
+            })
+            .catch((error) => {
+                alert("There was an error submitting your request. Please try again.");
+                console.error("Error:", error);
+            });
+        });
+
 
     </script>
 </body>
