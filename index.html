@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/assets/favicon/site.webmanifest">
+    
     <script src="https://kit.fontawesome.com/805903b53d.js" crossorigin="anonymous"></script>    
 
     <title>N.G. Bhoir Construction</title>
@@ -25,7 +31,44 @@
             width: 100%;
             max-width: 1440px;
             margin: 0 auto;
+            outline: 1px solid;
         }
+        /* Popup container styling */
+        .popup {
+            display: none; /* Hidden by default */
+            position: absolute; /* Positioned relative to body */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .popup span {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .close-popup {
+            margin-top: 10px;
+            padding: 8px 20px;
+            background-color: #FFA722; /* Customize to your theme color */
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .close-popup:hover {
+            background-color: #FF8800; /* Darker shade on hover */
+        }
+
         header {
             padding: 16px 24px;
             display: flex;
@@ -186,7 +229,6 @@
         /* About Us Section Styling */
         .about-us {
             padding: 80px 20px;
-            background-color: #f9f9f9;
         }
 
         .container {
@@ -198,7 +240,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-
+            width: 100%;
             gap: 50px;
         }
 
@@ -221,49 +263,26 @@
         }
 
 
-        /* Skeleton Loader */
-        .skeleton-loader {
-            width: 100%;
-            max-width: 574px;
-            height: 330px;
-            background-color: #e0e0e0; /* Gray background for the loader */
-            border-radius: 10px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Shimmering animation */
-        .skeleton-loader::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-            animation: shimmer 2s infinite;
-            z-index: 1;
-        }
         .about-image {
             width: 100%;
+            max-width: 575px;
+            display: flex;
+            margin-top: 40px;
         }
-        /* Keyframes for shimmer effect */
-        @keyframes shimmer {
-            0% {
-                left: -150%;
-            }
-            50% {
-                left: 100%;
-            }
-            100% {
-                left: 150%;
-            }
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            padding: 4px;
+            background-color: #FFA722; /* Accent color */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
         }
 
+        
         /* Services Section */
         .services {
             padding: 80px 20px;
-            background-color: #f9f9f9;
             text-align: center;
         }
 
@@ -272,13 +291,21 @@
             margin: 0 auto;
         }
 
-        .services h2 {
+        .services h3 {
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 50px;
             color: #333;
         }
-
+        .service-card span {
+            font-size: 22px;
+            font-weight: 700;
+            display: block;
+        }
+        .service-card p {
+            font-size: 18px;
+            font-weight: 400;
+        }
         /* Services Grid */
         .services-grid {
             display: grid;
@@ -307,55 +334,20 @@
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
-
-        /* Skeleton Loader for Image */
-        .image-placeholder {
+        .service-image-placeholder {
             width: 100%;
-            height: 200px;
-            background-color: #e0e0e0; /* Gray background for skeleton loader */
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            max-width: 300px;
+            height: 185px;
+            border-radius: 8px;
         }
 
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-            animation: shimmer 2s infinite;
-        }
-
-        /* Shimmer animation for skeleton loader */
-        @keyframes shimmer {
-            0% {
-                left: -150%;
-            }
-            50% {
-                left: 100%;
-            }
-            100% {
-                left: 150%;
-            }
-        }
-
-        /* Service Image */
         .service-image {
-            display: none;
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 10px;
         }
 
-        /* Fade-in for Image on Load (JavaScript needed to unhide the image on load) */
-        .service-image.loaded {
-            display: block;
-        }
 
         /* Call to Action Button (Request Service) */
         .cta-button {
@@ -381,13 +373,12 @@
             overflow: hidden;
         }
         .projects-carousel {
-            padding: 80px 20px;
-            background-color: #f9f9f9;
+            padding: 80px 20px 0px;
             text-align: center;
             overflow: hidden;
         }
 
-        .projects-carousel h2 {
+        .projects-carousel h4 {
             font-size: 36px;
             font-weight: bold;
             margin-bottom: 100px;
@@ -412,7 +403,9 @@
             align-items: center;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
-
+        .swiper-slide p {
+            font-weight: 600;
+        }
         /* Skeleton Loader for Images */
         .carousel-image-placeholder {
             width: 100%;
@@ -425,32 +418,8 @@
             margin-bottom: 15px;
         }
 
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-            animation: shimmer 2s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                left: -150%;
-            }
-            50% {
-                left: 100%;
-            }
-            100% {
-                left: 150%;
-            }
-        }
-
         /* Image Styling */
         .project-image {
-            display: none;
             width: 100%;
             max-width: 100%;
             height: 250px;
@@ -524,10 +493,8 @@
 
         .equipment-section {
             padding: 60px 20px;
-            background-color: #f4f4f4;
             text-align: center;
             border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .equipment-section p {
@@ -542,43 +509,16 @@
             justify-content: center;
             gap: 20px;
         }
-
-        /* Skeleton Loading */
-        .image-placeholder {
-            width: 100%;
-            max-width: 250px;
-            height: 150px;
-            background-color: #e0e0e0;
-            border-radius: 8px;
-            position: relative;
+        .equipment-image-placeholder {
+            width: 400px;
+            height: 300px;
         }
-
-        .image-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
+        .equipment-image-placeholder img {
+            width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
-            animation: shimmer 2s infinite;
+            object-fit: contain;
         }
 
-        @keyframes shimmer {
-            0% { left: -150%; }
-            50% { left: 100%; }
-            100% { left: 150%; }
-        }
-
-        /* Equipment Image Styling */
-        .equipment-grid img {
-            width: 100%;
-            max-width: 250px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: none; /* Hidden initially for skeleton loading */
-        }
 
         .cta-button {
             display: inline-block;
@@ -598,7 +538,6 @@
         }
         .achievements-overview {
         padding: 60px 20px;
-        background-color: #f4f4f4;
         text-align: center;
     }
 
@@ -608,7 +547,7 @@
         margin-bottom: 20px;
     }
 
-    .achievements-overview p {
+    .achievements-overview-subheading {
         font-size: 16px;
         color: #666;
         max-width: 800px;
@@ -618,35 +557,75 @@
     .achievements-preview-grid {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 20px;
         flex-wrap: wrap;
         margin-bottom: 30px;
     }
 
     .achievement-preview-card {
+        width: 100%;
+        max-width: 400px;
         background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        width: 300px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-align: left;
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        justify-content: space-between;
+        gap: 20px;
     }
+    .achievement-preview-card-company-logo {
+        width: 100%;
+    height: 90px;
+    display: flex;
+    max-width: 90px;
+        }
+        .achievement-preview-card-company-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .achievement-preview-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-    .achievement-preview-card h3 {
-        font-size: 18px;
-        margin-bottom: 10px;
-        color: #333;
-    }
+        .achievement-preview-card span {
+            font-size: 22px;
+            display: block;
+            font-weight: bold;
+            color: #333;
+        }
 
-    .achievement-preview-card p {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 10px;
-    }
+        .achievement-preview-card-info {
+            font-size: 16px;
+            color: #555;
+            font-weight: 600;
+        }
+        .achievement-preview-card-cost {
+            font-size: 16px;
+            color: #555;
+            font-weight: 600;
+        }
+        .achievement-preview-card strong {
+            color: #FFA722;
+        }
 
-    .achievement-preview-card strong {
-        color: #FFA722;
-    }
+        .achievement-preview-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .achievement-preview-card-bottom {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            flex-direction: column;
+        }
 
     .cta-button {
         display: inline-block;
@@ -664,7 +643,7 @@
         color: white;
     }
     .current-projects {
-        max-width: 1200px;
+        max-width: 1320px;
         margin: 0 auto;
         padding: 20px;
     }
@@ -693,17 +672,19 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-    cursor: pointer;
+        cursor: pointer;
     }
 
     .project-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
-
-    .project-card h3 {
+     .current-projects-brand-name {
+        font-weight: 600;
         font-size: 22px;
-        margin-bottom: 15px;
+     }
+    .project-card p {
+        font-size: 20px;
         color: #333;
     }
 
@@ -711,19 +692,21 @@
     .card-header {
         display: flex;
         align-items: center;
-        margin-bottom: 10px;
     }
 
-    .skeleton-image {
-        width: 100px;
-        height: 50px;
-        background-color: #e0e0e0;
+    .current-project-brand-logo {
+        width: 90px;
+        height: 90px;
         border-radius: 5px;
         margin-right: 15px;
     }
-
+    .current-project-brand-logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
     /* Project Description */
-    .project-card p {
+    .p {
         font-size: 16px;
         color: #555;
     }
@@ -737,11 +720,11 @@
         text-align: center;
         padding: 40px 20px;
     }
-
+    
     .clients-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive 2-column layout */
-        gap: 20px;
+        gap: 40px;
         max-width: 1200px;
         margin: 0 auto;
     }
@@ -754,6 +737,10 @@
         padding: 20px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
     .client-card:hover {
@@ -761,18 +748,21 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    /* Unique Skeleton Image Placeholder for Clients */
-    .client-skeleton-image {
+    .client-card p {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .client-image {
         width: 250px;
         height: 250px;
-        background: linear-gradient(90deg, #e0e0e0 25%, #f2f2f2 50%, #e0e0e0 75%);
-        background-size: 400% 100%;
-        animation: skeleton-loading 1.2s ease-in-out infinite;
         border-radius: 5px;
         margin-bottom: 10px;
-        display: inline-block; /* To center-align the placeholder */
+        display: block; 
     }
-
+    .client-image img {
+        width: 100%;
+        max-width: 100%;
+    }
 /* Contact Section */
 .contact-section {
     padding: 60px 20px;
@@ -787,7 +777,7 @@
     color: #333;
 }
 
-.contact-section p {
+.contact-section-subheading {
     font-size: 18px;
     margin-bottom: 40px;
     color: #666;
@@ -813,36 +803,38 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    gap: 20px;
 }
 
 .info-box i {
     font-size: 36px;
-    margin-bottom: 15px;
 }
 
-.info-box h3 {
+.info-box span {
     font-size: 20px;
-    margin-bottom: 10px;
+    display: block;
+    font-weight: bold;
 }
 
 .info-box p {
     font-size: 16px;
+    font-weight: 500;
 }
 
-/* Hover effect (Change to yellow background with white text) */
+
 .info-box:hover {
-    background-color: #FFA722; /* Theme yellow */
-    color: #fff; /* White text */
-    border-color: #FFA722; /* Yellow border */
+    background-color: #FFA722; 
+    color: #fff; 
+    border-color: #FFA722; 
 }
 
 .info-box:hover i,
 .info-box:hover h3,
 .info-box:hover p {
-    color: #fff; /* White text on hover */
+    color: #fff; 
 }
 
-/* Form and Map Container */
+
 .form-map-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -860,6 +852,7 @@
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .contact-form input,
@@ -1060,7 +1053,7 @@
             color: #6A6A6A;
         }
         .footer-wrapper {
-            padding: 40px 20px 0px;
+            padding: 40px 60px 0px;
 
         }
         .brand-logo {
@@ -1314,7 +1307,7 @@
 <body>
     <header> 
         <a href="/index.html" class="brand-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="2000" height="631" viewBox="0 0 2000 631"><g transform="matrix(1,0,0,1,-1.2121212121212466,-1.7117556813096257)"><svg viewBox="0 0 396 125" data-background-color="#ffffff" preserveAspectRatio="xMidYMid meet" height="631" width="2000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="tight-bounds" transform="matrix(1,0,0,1,0.2400000000000091,0.3390958164242477)"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g id="textblocktransform"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52" id="textblock"><g><rect width="395.52" height="95.10750333363447" fill="none" stroke-width="9.018103199999999" stroke="#000000" data-fill-palette-color="none" data-stroke-palette-color="tertiary"></rect><rect width="395.52" height="29.21430503351703" y="95.10750333363447" fill="#000000" data-fill-palette-color="tertiary"></rect></g><g><svg viewBox="0 0 395.52 95.10750333363447" height="95.10750333363447" width="395.52"><g transform="matrix(1,0,0,1,23.607599999999998,23.607599999999998)"><svg width="348.3048" viewBox="3.25 -35.45 270.21 37.160000000000004" height="47.89230333363447" data-palette-color="#2a2c35"><path d="M31.25-35.01L31.25 0 23.75 0 10.25-23.05 10.25 0 3.25 0 3.25-35.01 10.74-35.01 24.24-11.94 24.24-35.01 31.25-35.01ZM45.24-2.49L45.24-2.49Q45.24-1.61 44.92-0.84 44.6-0.07 44.04 0.49 43.48 1.05 42.72 1.38 41.97 1.71 41.09 1.71L41.09 1.71Q40.23 1.71 39.46 1.38 38.69 1.05 38.12 0.49 37.55-0.07 37.22-0.84 36.89-1.61 36.89-2.49L36.89-2.49Q36.89-3.34 37.22-4.1 37.55-4.86 38.12-5.42 38.69-5.98 39.46-6.31 40.23-6.64 41.09-6.64L41.09-6.64Q41.97-6.64 42.72-6.31 43.48-5.98 44.04-5.42 44.6-4.86 44.92-4.1 45.24-3.34 45.24-2.49ZM92.74-17.36L92.74-3.54Q90.3-1.46 87.3-0.35 84.29 0.76 81.05 0.76L81.05 0.76Q78.56 0.76 76.25 0.11 73.94-0.54 71.94-1.72 69.94-2.91 68.28-4.55 66.62-6.2 65.45-8.22 64.27-10.23 63.63-12.55 62.98-14.87 62.98-17.36L62.98-17.36Q62.98-19.85 63.63-22.14 64.27-24.44 65.45-26.45 66.62-28.47 68.28-30.11 69.94-31.76 71.94-32.93 73.94-34.11 76.25-34.75 78.56-35.4 81.05-35.4L81.05-35.4Q84.29-35.4 87.3-34.29 90.3-33.18 92.74-31.1L92.74-31.1 89.08-25Q87.49-26.61 85.42-27.53 83.34-28.44 81.05-28.44L81.05-28.44Q78.75-28.44 76.74-27.56 74.72-26.68 73.21-25.18 71.7-23.68 70.82-21.67 69.94-19.65 69.94-17.36L69.94-17.36Q69.94-15.04 70.82-13.01 71.7-10.99 73.21-9.47 74.72-7.96 76.74-7.08 78.75-6.2 81.05-6.2L81.05-6.2Q82.37-6.2 83.61-6.52 84.86-6.84 85.98-7.4L85.98-7.4 85.98-17.36 92.74-17.36ZM105.63-2.49L105.63-2.49Q105.63-1.61 105.31-0.84 104.99-0.07 104.43 0.49 103.87 1.05 103.12 1.38 102.36 1.71 101.48 1.71L101.48 1.71Q100.62 1.71 99.86 1.38 99.09 1.05 98.51 0.49 97.94-0.07 97.61-0.84 97.28-1.61 97.28-2.49L97.28-2.49Q97.28-3.34 97.61-4.1 97.94-4.86 98.51-5.42 99.09-5.98 99.86-6.31 100.62-6.64 101.48-6.64L101.48-6.64Q102.36-6.64 103.12-6.31 103.87-5.98 104.43-5.42 104.99-4.86 105.31-4.1 105.63-3.34 105.63-2.49ZM153.28-10.5L153.28-10.5Q153.28-8.33 152.45-6.42 151.62-4.52 150.19-3.09 148.76-1.66 146.86-0.83 144.96 0 142.78 0L142.78 0 125.28 0 125.28-35.01 142.78-35.01Q144.96-35.01 146.86-34.18 148.76-33.35 150.19-31.92 151.62-30.49 152.45-28.59 153.28-26.68 153.28-24.51L153.28-24.51Q153.28-23.54 153.01-22.51 152.74-21.48 152.26-20.53 151.77-19.58 151.08-18.8 150.4-18.02 149.57-17.5L149.57-17.5Q150.42-17.04 151.11-16.25 151.79-15.45 152.28-14.5 152.77-13.55 153.02-12.51 153.28-11.47 153.28-10.5ZM132.28-13.99L132.28-7.01 142.78-7.01Q143.52-7.01 144.15-7.28 144.78-7.54 145.26-8.02 145.74-8.5 146.01-9.13 146.27-9.77 146.27-10.5L146.27-10.5Q146.27-11.23 146.01-11.87 145.74-12.5 145.26-12.98 144.78-13.45 144.15-13.72 143.52-13.99 142.78-13.99L142.78-13.99 132.28-13.99ZM132.28-28L132.28-21 142.78-21Q143.52-21 144.15-21.26 144.78-21.53 145.26-22.01 145.74-22.49 146.01-23.13 146.27-23.78 146.27-24.51L146.27-24.51Q146.27-25.24 146.01-25.88 145.74-26.51 145.26-26.99 144.78-27.47 144.15-27.73 143.52-28 142.78-28L142.78-28 132.28-28ZM165.58-13.99L165.58 0 158.58 0 158.58-35.01 165.58-35.01 165.58-21 179.57-21 179.57-35.01 186.58-35.01 186.58 0 179.57 0 179.57-13.99 165.58-13.99ZM227.37-17.36L227.37-17.36Q227.37-14.87 226.73-12.56 226.08-10.25 224.91-8.24 223.73-6.23 222.07-4.57 220.41-2.91 218.41-1.72 216.41-0.54 214.09 0.11 211.77 0.76 209.28 0.76L209.28 0.76Q206.79 0.76 204.48 0.11 202.18-0.54 200.16-1.72 198.15-2.91 196.49-4.57 194.83-6.23 193.64-8.24 192.46-10.25 191.81-12.56 191.17-14.87 191.17-17.36L191.17-17.36Q191.17-19.85 191.81-22.17 192.46-24.49 193.64-26.49 194.83-28.49 196.49-30.15 198.15-31.81 200.16-32.98 202.18-34.16 204.48-34.8 206.79-35.45 209.28-35.45L209.28-35.45Q211.77-35.45 214.09-34.8 216.41-34.16 218.41-32.98 220.41-31.81 222.07-30.15 223.73-28.49 224.91-26.49 226.08-24.49 226.73-22.17 227.37-19.85 227.37-17.36ZM220.41-17.36L220.41-17.36Q220.41-19.65 219.54-21.69 218.66-23.73 217.16-25.23 215.65-26.73 213.62-27.61 211.58-28.49 209.28-28.49L209.28-28.49Q206.96-28.49 204.94-27.61 202.91-26.73 201.4-25.23 199.88-23.73 199-21.69 198.12-19.65 198.12-17.36L198.12-17.36Q198.12-15.06 199-13.05 199.88-11.04 201.4-9.52 202.91-8.01 204.94-7.13 206.96-6.25 209.28-6.25L209.28-6.25Q211.58-6.25 213.62-7.13 215.65-8.01 217.16-9.52 218.66-11.04 219.54-13.05 220.41-15.06 220.41-17.36ZM238.97-35.01L238.97 0 231.96 0 231.96-35.01 238.97-35.01ZM259.47-28L252.47-28 252.47-13.99 259.47-13.99Q260.91-13.99 262.18-14.54 263.45-15.09 264.4-16.04 265.36-16.99 265.91-18.27 266.45-19.56 266.45-21L266.45-21Q266.45-22.44 265.91-23.72 265.36-25 264.4-25.95 263.45-26.9 262.18-27.45 260.91-28 259.47-28L259.47-28ZM252.47-7.01L252.47 0 245.46 0 245.46-35.01 259.47-35.01Q261.4-35.01 263.18-34.51 264.97-34.01 266.52-33.09 268.07-32.18 269.35-30.9 270.63-29.61 271.54-28.05 272.46-26.49 272.96-24.71 273.46-22.92 273.46-21L273.46-21Q273.46-19.19 273.01-17.48 272.56-15.77 271.72-14.23 270.87-12.7 269.65-11.4 268.43-10.11 266.92-9.16L266.92-9.16 270.8 0 263.35 0 260.3-7.06 252.47-7.01Z" opacity="1" transform="matrix(1,0,0,1,0,0)" fill="#000000" class="wordmark-text-0" data-fill-palette-color="primary" id="text-0"></path></svg></g></svg></g></svg></g></svg></g><g></g></svg></g><defs></defs></svg><rect width="395.52" height="124.3218083671515" fill="none" stroke="none" visibility="hidden"></rect></g></svg></g></svg>        
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="2000" height="631" viewBox="0 0 2000 631"><g transform="matrix(1,0,0,1,-1.2121212121212466,-1.7117556813096257)"><svg viewBox="0 0 396 125" data-background-color="#F47427" preserveAspectRatio="xMidYMid meet" height="631" width="2000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="tight-bounds" transform="matrix(1,0,0,1,0.2400000000000091,0.3390958164242477)"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g id="textblocktransform"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52" id="textblock"><g><rect width="395.52" height="95.10750333363447" fill="none" stroke-width="9.018103199999999" stroke="#F47427" data-fill-palette-color="none" data-stroke-palette-color="tertiary"></rect><rect width="395.52" height="29.21430503351703" y="95.10750333363447" fill="#F47427" data-fill-palette-color="tertiary"></rect></g><g><svg viewBox="0 0 395.52 95.10750333363447" height="95.10750333363447" width="395.52"><g transform="matrix(1,0,0,1,23.607599999999998,23.607599999999998)"><svg width="348.3048" viewBox="3.25 -35.45 270.21 37.160000000000004" height="47.89230333363447" data-palette-color="#2a2c35"><path d="M31.25-35.01L31.25 0 23.75 0 10.25-23.05 10.25 0 3.25 0 3.25-35.01 10.74-35.01 24.24-11.94 24.24-35.01 31.25-35.01ZM45.24-2.49L45.24-2.49Q45.24-1.61 44.92-0.84 44.6-0.07 44.04 0.49 43.48 1.05 42.72 1.38 41.97 1.71 41.09 1.71L41.09 1.71Q40.23 1.71 39.46 1.38 38.69 1.05 38.12 0.49 37.55-0.07 37.22-0.84 36.89-1.61 36.89-2.49L36.89-2.49Q36.89-3.34 37.22-4.1 37.55-4.86 38.12-5.42 38.69-5.98 39.46-6.31 40.23-6.64 41.09-6.64L41.09-6.64Q41.97-6.64 42.72-6.31 43.48-5.98 44.04-5.42 44.6-4.86 44.92-4.1 45.24-3.34 45.24-2.49ZM92.74-17.36L92.74-3.54Q90.3-1.46 87.3-0.35 84.29 0.76 81.05 0.76L81.05 0.76Q78.56 0.76 76.25 0.11 73.94-0.54 71.94-1.72 69.94-2.91 68.28-4.55 66.62-6.2 65.45-8.22 64.27-10.23 63.63-12.55 62.98-14.87 62.98-17.36L62.98-17.36Q62.98-19.85 63.63-22.14 64.27-24.44 65.45-26.45 66.62-28.47 68.28-30.11 69.94-31.76 71.94-32.93 73.94-34.11 76.25-34.75 78.56-35.4 81.05-35.4L81.05-35.4Q84.29-35.4 87.3-34.29 90.3-33.18 92.74-31.1L92.74-31.1 89.08-25Q87.49-26.61 85.42-27.53 83.34-28.44 81.05-28.44L81.05-28.44Q78.75-28.44 76.74-27.56 74.72-26.68 73.21-25.18 71.7-23.68 70.82-21.67 69.94-19.65 69.94-17.36L69.94-17.36Q69.94-15.04 70.82-13.01 71.7-10.99 73.21-9.47 74.72-7.96 76.74-7.08 78.75-6.2 81.05-6.2L81.05-6.2Q82.37-6.2 83.61-6.52 84.86-6.84 85.98-7.4L85.98-7.4 85.98-17.36 92.74-17.36ZM105.63-2.49L105.63-2.49Q105.63-1.61 105.31-0.84 104.99-0.07 104.43 0.49 103.87 1.05 103.12 1.38 102.36 1.71 101.48 1.71L101.48 1.71Q100.62 1.71 99.86 1.38 99.09 1.05 98.51 0.49 97.94-0.07 97.61-0.84 97.28-1.61 97.28-2.49L97.28-2.49Q97.28-3.34 97.61-4.1 97.94-4.86 98.51-5.42 99.09-5.98 99.86-6.31 100.62-6.64 101.48-6.64L101.48-6.64Q102.36-6.64 103.12-6.31 103.87-5.98 104.43-5.42 104.99-4.86 105.31-4.1 105.63-3.34 105.63-2.49ZM153.28-10.5L153.28-10.5Q153.28-8.33 152.45-6.42 151.62-4.52 150.19-3.09 148.76-1.66 146.86-0.83 144.96 0 142.78 0L142.78 0 125.28 0 125.28-35.01 142.78-35.01Q144.96-35.01 146.86-34.18 148.76-33.35 150.19-31.92 151.62-30.49 152.45-28.59 153.28-26.68 153.28-24.51L153.28-24.51Q153.28-23.54 153.01-22.51 152.74-21.48 152.26-20.53 151.77-19.58 151.08-18.8 150.4-18.02 149.57-17.5L149.57-17.5Q150.42-17.04 151.11-16.25 151.79-15.45 152.28-14.5 152.77-13.55 153.02-12.51 153.28-11.47 153.28-10.5ZM132.28-13.99L132.28-7.01 142.78-7.01Q143.52-7.01 144.15-7.28 144.78-7.54 145.26-8.02 145.74-8.5 146.01-9.13 146.27-9.77 146.27-10.5L146.27-10.5Q146.27-11.23 146.01-11.87 145.74-12.5 145.26-12.98 144.78-13.45 144.15-13.72 143.52-13.99 142.78-13.99L142.78-13.99 132.28-13.99ZM132.28-28L132.28-21 142.78-21Q143.52-21 144.15-21.26 144.78-21.53 145.26-22.01 145.74-22.49 146.01-23.13 146.27-23.78 146.27-24.51L146.27-24.51Q146.27-25.24 146.01-25.88 145.74-26.51 145.26-26.99 144.78-27.47 144.15-27.73 143.52-28 142.78-28L142.78-28 132.28-28ZM165.58-13.99L165.58 0 158.58 0 158.58-35.01 165.58-35.01 165.58-21 179.57-21 179.57-35.01 186.58-35.01 186.58 0 179.57 0 179.57-13.99 165.58-13.99ZM227.37-17.36L227.37-17.36Q227.37-14.87 226.73-12.56 226.08-10.25 224.91-8.24 223.73-6.23 222.07-4.57 220.41-2.91 218.41-1.72 216.41-0.54 214.09 0.11 211.77 0.76 209.28 0.76L209.28 0.76Q206.79 0.76 204.48 0.11 202.18-0.54 200.16-1.72 198.15-2.91 196.49-4.57 194.83-6.23 193.64-8.24 192.46-10.25 191.81-12.56 191.17-14.87 191.17-17.36L191.17-17.36Q191.17-19.85 191.81-22.17 192.46-24.49 193.64-26.49 194.83-28.49 196.49-30.15 198.15-31.81 200.16-32.98 202.18-34.16 204.48-34.8 206.79-35.45 209.28-35.45L209.28-35.45Q211.77-35.45 214.09-34.8 216.41-34.16 218.41-32.98 220.41-31.81 222.07-30.15 223.73-28.49 224.91-26.49 226.08-24.49 226.73-22.17 227.37-19.85 227.37-17.36ZM220.41-17.36L220.41-17.36Q220.41-19.65 219.54-21.69 218.66-23.73 217.16-25.23 215.65-26.73 213.62-27.61 211.58-28.49 209.28-28.49L209.28-28.49Q206.96-28.49 204.94-27.61 202.91-26.73 201.4-25.23 199.88-23.73 199-21.69 198.12-19.65 198.12-17.36L198.12-17.36Q198.12-15.06 199-13.05 199.88-11.04 201.4-9.52 202.91-8.01 204.94-7.13 206.96-6.25 209.28-6.25L209.28-6.25Q211.58-6.25 213.62-7.13 215.65-8.01 217.16-9.52 218.66-11.04 219.54-13.05 220.41-15.06 220.41-17.36ZM238.97-35.01L238.97 0 231.96 0 231.96-35.01 238.97-35.01ZM259.47-28L252.47-28 252.47-13.99 259.47-13.99Q260.91-13.99 262.18-14.54 263.45-15.09 264.4-16.04 265.36-16.99 265.91-18.27 266.45-19.56 266.45-21L266.45-21Q266.45-22.44 265.91-23.72 265.36-25 264.4-25.95 263.45-26.9 262.18-27.45 260.91-28 259.47-28L259.47-28ZM252.47-7.01L252.47 0 245.46 0 245.46-35.01 259.47-35.01Q261.4-35.01 263.18-34.51 264.97-34.01 266.52-33.09 268.07-32.18 269.35-30.9 270.63-29.61 271.54-28.05 272.46-26.49 272.96-24.71 273.46-22.92 273.46-21L273.46-21Q273.46-19.19 273.01-17.48 272.56-15.77 271.72-14.23 270.87-12.7 269.65-11.4 268.43-10.11 266.92-9.16L266.92-9.16 270.8 0 263.35 0 260.3-7.06 252.47-7.01Z" opacity="1" transform="matrix(1,0,0,1,0,0)" fill="#F47427" class="wordmark-text-0" data-fill-palette-color="primary" id="text-0"></path></svg></g></svg></g></svg></g></svg></g><g></g></svg></g><defs></defs></svg><rect width="395.52" height="124.3218083671515" fill="none" stroke="none" visibility="hidden"></rect></g></svg></g></svg>        
         </a>
         <div class="hamburger">
             <div></div>
@@ -1357,10 +1350,7 @@
             <div class="about-us-content">
 
                 <div class="about-image">
-                    <!-- Placeholder for image with skeleton loader -->
-                    <div class="skeleton-loader">
-                        <img src="#" alt="" />
-                    </div>
+                    <img src="/assets/about-us-image.webp" alt="Construction Machinery" />
                 </div>
                 <div class="about-text">
                     <h2>About M/s. N.G. Bhoir</h2>
@@ -1381,64 +1371,64 @@
     </section>
     <section class="services">
         <div class="container">
-            <h2>Our Services</h2>
+            <h3>Our Services</h3>
             <div class="services-grid">
                 <!-- Service 1: Civil Work -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Civil Work image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/civil-work-image.webp" alt="Civil Work image" class="service-image" />
                     </div>
-                    <h3>Civil Work</h3>
+                    <span>Civil Work</span>
                     <p>We specialize in building construction, infrastructure projects, and other civil engineering solutions tailored to our clients' needs.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
     
                 <!-- Service 2: Earthwork -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Earthwork image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/earthwork.webp" alt="Earthwork image" class="service-image" />
                     </div>
-                    <h3>Earthwork</h3>
+                    <span>Earthwork</span>
                     <p>Our expertise includes excavation, ground leveling, and soil improvement for a wide range of construction and infrastructure projects.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
     
                 <!-- Service 3: Fabrication -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Fabrication image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/fabrication.webp" alt="Fabrication image" class="service-image" />
                     </div>
-                    <h3>Fabrication</h3>
+                    <span>Fabrication</span>
                     <p>We offer professional fabrication services, including structural assembly and metalworks for construction projects.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
     
                 <!-- Service 4: Excavation -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Excavation image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/excavation.webp" alt="Excavation image" class="service-image" />
                     </div>
-                    <h3>Excavation</h3>
+                    <span>Excavation</span>
                     <p>With state-of-the-art equipment, we handle large-scale excavation projects, ensuring safe and efficient site preparation.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
     
                 <!-- Service 5: Road and Infrastructure -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Road and Infrastructure image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/road and infrastructre.webp" alt="Road and Infrastructure image" class="service-image" />
                     </div>
-                    <h3>Road and Infrastructure</h3>
+                    <span>Road and Infrastructure</span>
                     <p>We specialize in road construction and infrastructure development, ensuring quality and safety in every project.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
     
                 <!-- Service 6: Crushing and Screening -->
                 <div class="service-card">
-                    <div class="image-placeholder">
-                        <img src="#" alt="Crushing and Screening image" class="service-image" />
+                    <div class="service-image-placeholder">
+                        <img src="/assets/services-images/crushing.webp" alt="Crushing and Screening image" class="service-image" />
                     </div>
-                    <h3>Crushing & Screening</h3>
+                    <span>Crushing & Screening</span>
                     <p>We provide crushing and screening services for large infrastructure projects, ensuring quality materials for every build.</p>
                     <a href="#contact" class="cta-button">Request Service</a>
                 </div>
@@ -1447,97 +1437,87 @@
     </section>
     <section class="projects-carousel">
         <div class="carousel-container">
-            <h2>Our Projects</h2>
+            <h4>Our Projects</h4>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <!-- Project 1: Dredging Work at JNPT -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/dredging-jnpt.jpg" alt="Dredging Work at JNPT" class="project-image">
+                            <img src="/assets/our-projects/DredgingWorkatJNPT.webp" alt="Dredging Work at JNPT" class="project-image">
                         </div>
-                        <h3>Dredging Work at JNPT</h3>
-                        <p>Focused on dredging activities at Jawaharlal Nehru Port Trust (JNPT).</p>
+                        <p>Dredging Work at JNPT</p>
                     </div>
 
                     <!-- Project 2: Asphalting Work at JNPT -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/asphalting-jnpt.jpg" alt="Asphalting Work at JNPT" class="project-image">
+                            <img src="/assets/our-projects/AsphaltingWorkatJNPT-1.webp" alt="Asphalting Work at JNPT" class="project-image">
                         </div>
-                        <h3>Asphalting Work at JNPT</h3>
-                        <p>Asphalt-related projects for roads at JNPT.</p>
+                        <p>Asphalting Work at JNPT</p>
                     </div>
 
                     <!-- Project 3: Fabrication Work for VTMS Tower at JNPT -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/fabrication-vtms.jpg" alt="Fabrication Work for VTMS Tower at JNPT" class="project-image">
+                            <img src="/assets/our-projects/FabricationWorkforVTMSToweratJNPT.webp" alt="Fabrication Work for VTMS Tower at JNPT" class="project-image">
                         </div>
-                        <h3>Fabrication Work for VTMS Tower at JNPT</h3>
-                        <p>Fabrication work for the Vessel Traffic Management System (VTMS) tower at JNPT.</p>
+                        <p>Fabrication Work for VTMS Tower at JNPT</p>
                     </div>
 
                     <!-- Project 4: Reefer Monitoring Structure at JNPT -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/reefer-monitoring.jpg" alt="Reefer Monitoring Structure at JNPT" class="project-image">
+                            <img src="/assets/our-projects/FabricationworkfortheReeferMonitoringstructureatJNPT.webp" alt="Reefer Monitoring Structure at JNPT" class="project-image">
                         </div>
-                        <h3>Reefer Monitoring Structure at JNPT</h3>
-                        <p>Fabrication work for the Reefer Monitoring structure at JNPT.</p>
+                        <p>Reefer Monitoring Structure at JNPT</p>
                     </div>
 
                     <!-- Project 5: Geotextile and Rock Filling for RKEC Projects Ltd. -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/geotextile-rock-filling.jpg" alt="Geotextile and Rock Filling" class="project-image">
+                            <img src="/assets/our-projects/GeotextileandRockFillingforRKECProjectsLtd..webp" alt="Geotextile and Rock Filling" class="project-image">
                         </div>
-                        <h3>Geotextile and Rock Filling for RKEC Projects Ltd.</h3>
-                        <p>Geotextile installation and rock filling for RKEC Projects Ltd.</p>
+                        <p>Geotextile and Rock Filling for RKEC Projects Ltd.</p>
                     </div>
 
                     <!-- Project 6: Ground Improvement Work for NMSEZ -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/ground-improvement-nmsez.jpg" alt="Ground Improvement for NMSEZ" class="project-image">
+                            <img src="/assets/our-projects/GroundImprovementWorkforNMSEZ.webp" alt="Ground Improvement for NMSEZ" class="project-image">
                         </div>
-                        <h3>Ground Improvement Work for NMSEZ</h3>
-                        <p>Ground improvement work for Navi Mumbai Special Economic Zone (NMSEZ).</p>
+                        <p>Ground Improvement Work for NMSEZ</p>
                     </div>
 
                     <!-- Project 7: Road Work at JNPT -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/road-work-jnpt.jpg" alt="Road Work at JNPT" class="project-image">
+                            <img src="/assets/our-projects/RoadWorkatJNPT.webp" alt="Road Work at JNPT" class="project-image">
                         </div>
-                        <h3>Road Work at JNPT</h3>
-                        <p>Road construction and development at JNPT, ensuring better connectivity.</p>
+                        <p>Road Work at JNPT</p>
                     </div>
 
                     <!-- Project 8: Soling Work at GBL -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/soling-work-gbl.jpg" alt="Soling Work at GBL" class="project-image">
+                            <img src="/assets/our-projects/SolingWorkatGBL.webp" alt="Soling Work at GBL" class="project-image">
                         </div>
-                        <h3>Soling Work at GBL</h3>
-                        <p>Soling work for Ganesh Benzoplast Ltd. (GBL) as part of infrastructure improvement.</p>
+                        <p>Soling Work at GBL</p>
                     </div>
 
                     <!-- Project 9: Drainage Work at Saavla Food & Cold Storage Pvt Ltd -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/drainage-saavla-food.jpg" alt="Drainage Work at Saavla Food" class="project-image">
+                            <img src="/assets/our-projects/DrainageWorkatSaavlaFoodColdStoragePvtLtd.webp" alt="Drainage Work at Saavla Food" class="project-image">
                         </div>
-                        <h3>Drainage Work at Saavla Food & Cold Storage Pvt Ltd</h3>
-                        <p>Drainage system construction for Saavla Food & Cold Storage Pvt Ltd.</p>
+                        <p>Drainage Work at Saavla Food & Cold Storage Pvt Ltd</p>
                     </div>
 
                     <!-- Project 10: Residential Project at Uran -->
                     <div class="swiper-slide">
                         <div class="carousel-image-placeholder">
-                            <img src="images/residential-uran.jpg" alt="Residential Project at Uran" class="project-image">
+                            <img src="/assets/our-projects/ResidentialProjectatUran.webp" alt="Residential Project at Uran" class="project-image">
                         </div>
-                        <h3>Residential Project at Uran</h3>
-                        <p>Residential development projects at Uran, Maharashtra, providing quality housing.</p>
+                        <p>Residential Project at Uran</p>
                     </div>
                 </div>
                 <div class="swiper-button-next"></div>
@@ -1551,14 +1531,17 @@
 
         <!-- Equipment Grid with Skeleton Loading -->
         <div class="equipment-grid">
-            <div class="image-placeholder"></div>
-            <img src="images/tata-tippers-2516.jpg" alt="TATA TIPPERS 2516">
+            <div class="equipment-image-placeholder">
+                <img src="/assets/equipment-and-machinery/ExcavatorTATA210.webp" alt="Excavator TATA 210">
+            </div>
 
-            <div class="image-placeholder"></div>
-            <img src="images/excavator-tata-210.jpg" alt="Excavator TATA 210">
+            <div class="equipment-image-placeholder">
+                <img src="/assets/equipment-and-machinery/Vibro Roller.webp" alt="Vibro Roller">
+            </div>
 
-            <div class="image-placeholder"></div>
-            <img src="images/water-tankers.jpg" alt="Water Tankers">
+            <div class="equipment-image-placeholder">
+                <img src="/assets/equipment-and-machinery/Backhoe Loader (JCB).webp" alt="Backhoe Loader (JCB)">
+            </div>
         </div>
 
         <!-- CTA Button for Redirection -->
@@ -1566,30 +1549,60 @@
     </section>
     <section class="achievements-overview">
         <h2>Our Major Achievements</h2>
-        <p>We are proud of our numerous accomplishments across various projects. From large-scale infrastructure to eco-friendly construction, our achievements reflect our commitment to excellence.</p>
+        <p class="achievements-overview-subheading">We are proud of our numerous accomplishments across various projects. From large-scale infrastructure to eco-friendly construction, our achievements reflect our commitment to excellence.</p>
     
         <!-- Display a few key achievements as a teaser -->
         <div class="achievements-preview-grid">
             <!-- Achievement 1 -->
+
             <div class="achievement-preview-card">
-                <h3>Savla Foods and Cold Storage Pvt. Ltd.</h3>
-                <p>Development of yard at Chirle Village</p>
-                <p><strong>Cost:</strong> ₹2,17,71,972</p>
+                <div class="achievement-preview-card-header">
+                    <div class="achievement-preview-card-company-logo">
+                        <img src="/assets/clients-logo/salva food and cold storage.webp" alt="Bayer Crop Science Limited (2010)">
+                    </div>
+        
+                    <span>Savla Foods and Cold Storage Pvt. Ltd.</span>
+                </div>
+                <div class="achievement-preview-card-bottom">
+                    <p class="achievement-preview-card-info">Development of yard at Chirle Village</p>
+                    <p class="achievement-preview-card-cost"><strong>Cost:</strong> ₹2,17,71,972</p>
+                </div>
             </div>
-    
+
+            
             <!-- Achievement 2 -->
+
             <div class="achievement-preview-card">
-                <h3>Heidelberg Cement (I) Ltd.</h3>
-                <p>Shifting of slag to the designated location at Dolvi Site</p>
-                <p><strong>Cost:</strong> ₹46,99,360</p>
+                <div class="achievement-preview-card-header">
+                    <div class="achievement-preview-card-company-logo">
+                        <img src="/assets/clients-logo/heidelbergcement_india_logo.webp" alt="Bayer Crop Science Limited (2010)">
+                    </div>
+        
+                    <span>Heidelberg Cement (I) Ltd.</span>
+                </div>
+                <div class="achievement-preview-card-bottom">
+                    <p class="achievement-preview-card-info">Shifting of slag to the designated location at Dolvi Site</p>
+                    <p class="achievement-preview-card-cost"><strong>Cost:</strong> ₹46,99,360</p>
+                </div>
             </div>
-    
+
             <!-- Achievement 3 -->
+
+
+
             <div class="achievement-preview-card">
-                <h3>Blue Star Construction Co.</h3>
-                <p>Earth filling in Zone-V at JN Port Township</p>
-                <p><strong>Cost:</strong> ₹9,32,52,593</p>
+                <div class="achievement-preview-card-header">
+                    <div class="achievement-preview-card-company-logo">
+                        <img src="/assets/clients-logo/JNPT.webp" alt="JNPT">
+                    </div>
+                    <span>JNPT (2012)</span>
+                </div>
+                <div class="achievement-preview-card-bottom">
+                    <p class="achievement-preview-card-info">Dredging work at JNPT Coastal Berth</p>
+                    <p class="achievement-preview-card-cost"><strong>Cost:</strong> ₹5,12,45,000</p>
+                </div>
             </div>
+
         </div>
     
         <!-- CTA Button -->
@@ -1602,8 +1615,10 @@
             <!-- Project 1 -->
             <div class="project-card">
                 <div class="card-header">
-                    <div class="skeleton-image"></div>
-                    <h3>JSW Cement</h3>
+                    <div class="current-project-brand-logo">
+                        <img src="/assets/clients-logo/jsw.webp" alt="">
+                    </div>
+                    <p class="current-projects-brand-name">JSW Cement</p>
                 </div>
                 <p><strong>Location:</strong> Dolvi Plant</p>
                 <p>Supply of Aggregates (Coarse & Fine) & Crushed Sand.</p>
@@ -1613,8 +1628,10 @@
             <!-- Project 2 -->
             <div class="project-card">
                 <div class="card-header">
-                    <div class="skeleton-image"></div>
-                    <h3>JNPT Development Approach Road</h3>
+                    <div class="current-project-brand-logo">
+                        <img src="/assets/clients-logo/JNPT.webp" alt="">
+                    </div>
+                    <p class="current-projects-brand-name">JNPT Development Approach Road</p>
                 </div>
                 <p><strong>Location:</strong> Coastal Berth</p>
                 <p>Development Approach Road for Coastal Berth.</p>
@@ -1624,8 +1641,10 @@
             <!-- Project 3 -->
             <div class="project-card">
                 <div class="card-header">
-                    <div class="skeleton-image"></div>
-                    <h3>JNPT Reclamation Project</h3>
+                    <div class="current-project-brand-logo">
+                        <img src="/assets/clients-logo/JNPT.webp" alt="">
+                    </div>
+                    <p class="current-projects-brand-name">JNPT Reclamation Project</p>
                 </div>
                 <p><strong>Location:</strong> Coastal Berth</p>
                 <p>Reclamation of Balance Backup area of Coastal Berth.</p>
@@ -1635,8 +1654,10 @@
             <!-- Project 4 -->
             <div class="project-card">
                 <div class="card-header">
-                    <div class="skeleton-image"></div>
-                    <h3>JNPT Additional Backup Area Development</h3>
+                    <div class="current-project-brand-logo">
+                        <img src="/assets/clients-logo/JNPT.webp" alt="">
+                    </div>
+                    <p class="current-projects-brand-name">JNPT Additional Backup Area Development</p>
                 </div>
                 <p><strong>Location:</strong> Coastal Berth</p>
                 <p>Development of Additional Backup Area of Coastal Berth.</p>
@@ -1648,77 +1669,83 @@
     <section class="clients-section">
         <h2>Our Clients</h2>
         <div class="clients-grid">
-            <!-- Client 1 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/JNPT.webp" alt="Jawaharlal Nehru Port Trust (JNPT)">
+                </div>
                 <p>Jawaharlal Nehru Port Trust (JNPT)</p>
             </div>
-            <!-- Client 2 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/jsw.webp" alt="JSW">
+                </div>
                 <p>JSW</p>
             </div>
-            <!-- Client 3 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/bayer crop.webp" alt="Bayer Crop Science Ltd.">
+                </div>
                 <p>Bayer Crop Science Ltd.</p>
             </div>
-            <!-- Client 4 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
-                <p>Blue Star Construction Co.</p>
-            </div>
-            <!-- Client 5 -->
-            <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/heidelbergcement_india_logo.webp" alt="Heidelberg Cement (I) Ltd.">
+                </div>
                 <p>Heidelberg Cement (I) Ltd.</p>
             </div>
-            <!-- Client 6 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/ganesh benzo.webp" alt="Ganesh Banzoplast Limited">
+                </div>
                 <p>Ganesh Banzoplast Limited</p>
             </div>
-            <!-- Client 7 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/dpworld.webp" alt="DP World">
+                </div>
                 <p>DP World</p>
             </div>
-            <!-- Client 8 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/Punj Lloyd Ltd..webp" alt="Punj Lloyd Ltd.">
+                </div>
                 <p>Punj Lloyd Ltd.</p>
             </div>
-            <!-- Client 9 -->
+
             <div class="client-card">
-                <div class="client-skeleton-image"></div>
-                <p>Navi Mumbai Special Economic Zone</p>
-            </div>
-            <!-- Client 10 -->
-            <div class="client-card">
-                <div class="client-skeleton-image"></div>
+                <div class="client-image">
+                    <img src="/assets/clients-logo/itd_india_logo.webp" alt="ITD Cementation India Ltd.">
+                </div>
                 <p>ITD Cementation India Ltd.</p>
             </div>
         </div>
     </section>
     <section class="contact-section">
         <h2>Get in Touch</h2>
-        <p>Feel free to contact us! Submit your queries and we will get back to you as soon as possible.</p>
+        <p class="contact-section-subheading">Feel free to contact us! Submit your queries and we will get back to you as soon as possible.</p>
     
         <div class="contact-grid">
             <!-- Contact Info Boxes -->
             <div class="info-box">
                 <i class="fas fa-map-marker-alt"></i>
-                <h3>Address</h3>
+                <span>Address</span>
                 <p>Uran, Dist: Raigad - 400702</p>
             </div>
             <div class="info-box">
                 <i class="fas fa-phone"></i>
-                <h3>Contact</h3>
+                <span>Contact</span>
                 <p>+91 7045718383</p>
             </div>
             <div class="info-box">
                 <i class="fas fa-envelope"></i>
-                <h3>Email</h3>
+                <span>Email</span>
                 <p>ngbhoir@hotmail.com</p>
             </div>
         </div>
@@ -1734,7 +1761,7 @@
             <!-- Contact Form -->
             <div class="contact-form">
                 <span class="contact-form-heading">Contact Us</span>
-                <form id="contact-form" onsubmit="return validateForm()">
+                <form id="contact-form" >
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Name" required>
                         <span id="name-error" class="error-message"></span>
@@ -1757,8 +1784,14 @@
             
                     <button type="submit" class="submit-button">Send</button>
                 </form>
+                <!-- Popup Message Container -->
+                <div id="popup" class="popup">
+                    <span id="popup-message"></span>
+                    <button onclick="closePopup()" class="close-popup">OK</button>
+                </div>
             </div>
-            
+
+
         </div>
     </section>
     <footer>
@@ -1766,7 +1799,7 @@
 
             <div class="brand-logo-quoteWrapper">
                 <a href="#" class="brand-logo">
-                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="2000" height="631" viewBox="0 0 2000 631"><g transform="matrix(1,0,0,1,-1.2121212121212466,-1.7117556813096257)"><svg viewBox="0 0 396 125" data-background-color="#ffffff" preserveAspectRatio="xMidYMid meet" height="631" width="2000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="tight-bounds" transform="matrix(1,0,0,1,0.2400000000000091,0.3390958164242477)"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g id="textblocktransform"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52" id="textblock"><g><rect width="395.52" height="95.10750333363447" fill="none" stroke-width="9.018103199999999" stroke="#ffffff" data-fill-palette-color="none" data-stroke-palette-color="tertiary"></rect><rect width="395.52" height="29.21430503351703" y="95.10750333363447" fill="#ffffff" data-fill-palette-color="tertiary"></rect></g><g><svg viewBox="0 0 395.52 95.10750333363447" height="95.10750333363447" width="395.52"><g transform="matrix(1,0,0,1,23.607599999999998,23.607599999999998)"><svg width="348.3048" viewBox="3.25 -35.45 270.21 37.160000000000004" height="47.89230333363447" data-palette-color="#2a2c35"><path d="M31.25-35.01L31.25 0 23.75 0 10.25-23.05 10.25 0 3.25 0 3.25-35.01 10.74-35.01 24.24-11.94 24.24-35.01 31.25-35.01ZM45.24-2.49L45.24-2.49Q45.24-1.61 44.92-0.84 44.6-0.07 44.04 0.49 43.48 1.05 42.72 1.38 41.97 1.71 41.09 1.71L41.09 1.71Q40.23 1.71 39.46 1.38 38.69 1.05 38.12 0.49 37.55-0.07 37.22-0.84 36.89-1.61 36.89-2.49L36.89-2.49Q36.89-3.34 37.22-4.1 37.55-4.86 38.12-5.42 38.69-5.98 39.46-6.31 40.23-6.64 41.09-6.64L41.09-6.64Q41.97-6.64 42.72-6.31 43.48-5.98 44.04-5.42 44.6-4.86 44.92-4.1 45.24-3.34 45.24-2.49ZM92.74-17.36L92.74-3.54Q90.3-1.46 87.3-0.35 84.29 0.76 81.05 0.76L81.05 0.76Q78.56 0.76 76.25 0.11 73.94-0.54 71.94-1.72 69.94-2.91 68.28-4.55 66.62-6.2 65.45-8.22 64.27-10.23 63.63-12.55 62.98-14.87 62.98-17.36L62.98-17.36Q62.98-19.85 63.63-22.14 64.27-24.44 65.45-26.45 66.62-28.47 68.28-30.11 69.94-31.76 71.94-32.93 73.94-34.11 76.25-34.75 78.56-35.4 81.05-35.4L81.05-35.4Q84.29-35.4 87.3-34.29 90.3-33.18 92.74-31.1L92.74-31.1 89.08-25Q87.49-26.61 85.42-27.53 83.34-28.44 81.05-28.44L81.05-28.44Q78.75-28.44 76.74-27.56 74.72-26.68 73.21-25.18 71.7-23.68 70.82-21.67 69.94-19.65 69.94-17.36L69.94-17.36Q69.94-15.04 70.82-13.01 71.7-10.99 73.21-9.47 74.72-7.96 76.74-7.08 78.75-6.2 81.05-6.2L81.05-6.2Q82.37-6.2 83.61-6.52 84.86-6.84 85.98-7.4L85.98-7.4 85.98-17.36 92.74-17.36ZM105.63-2.49L105.63-2.49Q105.63-1.61 105.31-0.84 104.99-0.07 104.43 0.49 103.87 1.05 103.12 1.38 102.36 1.71 101.48 1.71L101.48 1.71Q100.62 1.71 99.86 1.38 99.09 1.05 98.51 0.49 97.94-0.07 97.61-0.84 97.28-1.61 97.28-2.49L97.28-2.49Q97.28-3.34 97.61-4.1 97.94-4.86 98.51-5.42 99.09-5.98 99.86-6.31 100.62-6.64 101.48-6.64L101.48-6.64Q102.36-6.64 103.12-6.31 103.87-5.98 104.43-5.42 104.99-4.86 105.31-4.1 105.63-3.34 105.63-2.49ZM153.28-10.5L153.28-10.5Q153.28-8.33 152.45-6.42 151.62-4.52 150.19-3.09 148.76-1.66 146.86-0.83 144.96 0 142.78 0L142.78 0 125.28 0 125.28-35.01 142.78-35.01Q144.96-35.01 146.86-34.18 148.76-33.35 150.19-31.92 151.62-30.49 152.45-28.59 153.28-26.68 153.28-24.51L153.28-24.51Q153.28-23.54 153.01-22.51 152.74-21.48 152.26-20.53 151.77-19.58 151.08-18.8 150.4-18.02 149.57-17.5L149.57-17.5Q150.42-17.04 151.11-16.25 151.79-15.45 152.28-14.5 152.77-13.55 153.02-12.51 153.28-11.47 153.28-10.5ZM132.28-13.99L132.28-7.01 142.78-7.01Q143.52-7.01 144.15-7.28 144.78-7.54 145.26-8.02 145.74-8.5 146.01-9.13 146.27-9.77 146.27-10.5L146.27-10.5Q146.27-11.23 146.01-11.87 145.74-12.5 145.26-12.98 144.78-13.45 144.15-13.72 143.52-13.99 142.78-13.99L142.78-13.99 132.28-13.99ZM132.28-28L132.28-21 142.78-21Q143.52-21 144.15-21.26 144.78-21.53 145.26-22.01 145.74-22.49 146.01-23.13 146.27-23.78 146.27-24.51L146.27-24.51Q146.27-25.24 146.01-25.88 145.74-26.51 145.26-26.99 144.78-27.47 144.15-27.73 143.52-28 142.78-28L142.78-28 132.28-28ZM165.58-13.99L165.58 0 158.58 0 158.58-35.01 165.58-35.01 165.58-21 179.57-21 179.57-35.01 186.58-35.01 186.58 0 179.57 0 179.57-13.99 165.58-13.99ZM227.37-17.36L227.37-17.36Q227.37-14.87 226.73-12.56 226.08-10.25 224.91-8.24 223.73-6.23 222.07-4.57 220.41-2.91 218.41-1.72 216.41-0.54 214.09 0.11 211.77 0.76 209.28 0.76L209.28 0.76Q206.79 0.76 204.48 0.11 202.18-0.54 200.16-1.72 198.15-2.91 196.49-4.57 194.83-6.23 193.64-8.24 192.46-10.25 191.81-12.56 191.17-14.87 191.17-17.36L191.17-17.36Q191.17-19.85 191.81-22.17 192.46-24.49 193.64-26.49 194.83-28.49 196.49-30.15 198.15-31.81 200.16-32.98 202.18-34.16 204.48-34.8 206.79-35.45 209.28-35.45L209.28-35.45Q211.77-35.45 214.09-34.8 216.41-34.16 218.41-32.98 220.41-31.81 222.07-30.15 223.73-28.49 224.91-26.49 226.08-24.49 226.73-22.17 227.37-19.85 227.37-17.36ZM220.41-17.36L220.41-17.36Q220.41-19.65 219.54-21.69 218.66-23.73 217.16-25.23 215.65-26.73 213.62-27.61 211.58-28.49 209.28-28.49L209.28-28.49Q206.96-28.49 204.94-27.61 202.91-26.73 201.4-25.23 199.88-23.73 199-21.69 198.12-19.65 198.12-17.36L198.12-17.36Q198.12-15.06 199-13.05 199.88-11.04 201.4-9.52 202.91-8.01 204.94-7.13 206.96-6.25 209.28-6.25L209.28-6.25Q211.58-6.25 213.62-7.13 215.65-8.01 217.16-9.52 218.66-11.04 219.54-13.05 220.41-15.06 220.41-17.36ZM238.97-35.01L238.97 0 231.96 0 231.96-35.01 238.97-35.01ZM259.47-28L252.47-28 252.47-13.99 259.47-13.99Q260.91-13.99 262.18-14.54 263.45-15.09 264.4-16.04 265.36-16.99 265.91-18.27 266.45-19.56 266.45-21L266.45-21Q266.45-22.44 265.91-23.72 265.36-25 264.4-25.95 263.45-26.9 262.18-27.45 260.91-28 259.47-28L259.47-28ZM252.47-7.01L252.47 0 245.46 0 245.46-35.01 259.47-35.01Q261.4-35.01 263.18-34.51 264.97-34.01 266.52-33.09 268.07-32.18 269.35-30.9 270.63-29.61 271.54-28.05 272.46-26.49 272.96-24.71 273.46-22.92 273.46-21L273.46-21Q273.46-19.19 273.01-17.48 272.56-15.77 271.72-14.23 270.87-12.7 269.65-11.4 268.43-10.11 266.92-9.16L266.92-9.16 270.8 0 263.35 0 260.3-7.06 252.47-7.01Z" opacity="1" transform="matrix(1,0,0,1,0,0)" fill="#ffffff" class="wordmark-text-0" data-fill-palette-color="primary" id="text-0"></path></svg></g></svg></g></svg></g></svg></g><g></g></svg></g><defs></defs></svg><rect width="395.52" height="124.3218083671515" fill="none" stroke="none" visibility="hidden"></rect></g></svg></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="2000" height="631" viewBox="0 0 2000 631"><g transform="matrix(1,0,0,1,-1.2121212121212466,-1.7117556813096257)"><svg viewBox="0 0 396 125" data-background-color="#F47427" preserveAspectRatio="xMidYMid meet" height="631" width="2000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="tight-bounds" transform="matrix(1,0,0,1,0.2400000000000091,0.3390958164242477)"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52"><g id="textblocktransform"><svg viewBox="0 0 395.52 124.3218083671515" height="124.3218083671515" width="395.52" id="textblock"><g><rect width="395.52" height="95.10750333363447" fill="none" stroke-width="9.018103199999999" stroke="#F47427" data-fill-palette-color="none" data-stroke-palette-color="tertiary"></rect><rect width="395.52" height="29.21430503351703" y="95.10750333363447" fill="#F47427" data-fill-palette-color="tertiary"></rect></g><g><svg viewBox="0 0 395.52 95.10750333363447" height="95.10750333363447" width="395.52"><g transform="matrix(1,0,0,1,23.607599999999998,23.607599999999998)"><svg width="348.3048" viewBox="3.25 -35.45 270.21 37.160000000000004" height="47.89230333363447" data-palette-color="#2a2c35"><path d="M31.25-35.01L31.25 0 23.75 0 10.25-23.05 10.25 0 3.25 0 3.25-35.01 10.74-35.01 24.24-11.94 24.24-35.01 31.25-35.01ZM45.24-2.49L45.24-2.49Q45.24-1.61 44.92-0.84 44.6-0.07 44.04 0.49 43.48 1.05 42.72 1.38 41.97 1.71 41.09 1.71L41.09 1.71Q40.23 1.71 39.46 1.38 38.69 1.05 38.12 0.49 37.55-0.07 37.22-0.84 36.89-1.61 36.89-2.49L36.89-2.49Q36.89-3.34 37.22-4.1 37.55-4.86 38.12-5.42 38.69-5.98 39.46-6.31 40.23-6.64 41.09-6.64L41.09-6.64Q41.97-6.64 42.72-6.31 43.48-5.98 44.04-5.42 44.6-4.86 44.92-4.1 45.24-3.34 45.24-2.49ZM92.74-17.36L92.74-3.54Q90.3-1.46 87.3-0.35 84.29 0.76 81.05 0.76L81.05 0.76Q78.56 0.76 76.25 0.11 73.94-0.54 71.94-1.72 69.94-2.91 68.28-4.55 66.62-6.2 65.45-8.22 64.27-10.23 63.63-12.55 62.98-14.87 62.98-17.36L62.98-17.36Q62.98-19.85 63.63-22.14 64.27-24.44 65.45-26.45 66.62-28.47 68.28-30.11 69.94-31.76 71.94-32.93 73.94-34.11 76.25-34.75 78.56-35.4 81.05-35.4L81.05-35.4Q84.29-35.4 87.3-34.29 90.3-33.18 92.74-31.1L92.74-31.1 89.08-25Q87.49-26.61 85.42-27.53 83.34-28.44 81.05-28.44L81.05-28.44Q78.75-28.44 76.74-27.56 74.72-26.68 73.21-25.18 71.7-23.68 70.82-21.67 69.94-19.65 69.94-17.36L69.94-17.36Q69.94-15.04 70.82-13.01 71.7-10.99 73.21-9.47 74.72-7.96 76.74-7.08 78.75-6.2 81.05-6.2L81.05-6.2Q82.37-6.2 83.61-6.52 84.86-6.84 85.98-7.4L85.98-7.4 85.98-17.36 92.74-17.36ZM105.63-2.49L105.63-2.49Q105.63-1.61 105.31-0.84 104.99-0.07 104.43 0.49 103.87 1.05 103.12 1.38 102.36 1.71 101.48 1.71L101.48 1.71Q100.62 1.71 99.86 1.38 99.09 1.05 98.51 0.49 97.94-0.07 97.61-0.84 97.28-1.61 97.28-2.49L97.28-2.49Q97.28-3.34 97.61-4.1 97.94-4.86 98.51-5.42 99.09-5.98 99.86-6.31 100.62-6.64 101.48-6.64L101.48-6.64Q102.36-6.64 103.12-6.31 103.87-5.98 104.43-5.42 104.99-4.86 105.31-4.1 105.63-3.34 105.63-2.49ZM153.28-10.5L153.28-10.5Q153.28-8.33 152.45-6.42 151.62-4.52 150.19-3.09 148.76-1.66 146.86-0.83 144.96 0 142.78 0L142.78 0 125.28 0 125.28-35.01 142.78-35.01Q144.96-35.01 146.86-34.18 148.76-33.35 150.19-31.92 151.62-30.49 152.45-28.59 153.28-26.68 153.28-24.51L153.28-24.51Q153.28-23.54 153.01-22.51 152.74-21.48 152.26-20.53 151.77-19.58 151.08-18.8 150.4-18.02 149.57-17.5L149.57-17.5Q150.42-17.04 151.11-16.25 151.79-15.45 152.28-14.5 152.77-13.55 153.02-12.51 153.28-11.47 153.28-10.5ZM132.28-13.99L132.28-7.01 142.78-7.01Q143.52-7.01 144.15-7.28 144.78-7.54 145.26-8.02 145.74-8.5 146.01-9.13 146.27-9.77 146.27-10.5L146.27-10.5Q146.27-11.23 146.01-11.87 145.74-12.5 145.26-12.98 144.78-13.45 144.15-13.72 143.52-13.99 142.78-13.99L142.78-13.99 132.28-13.99ZM132.28-28L132.28-21 142.78-21Q143.52-21 144.15-21.26 144.78-21.53 145.26-22.01 145.74-22.49 146.01-23.13 146.27-23.78 146.27-24.51L146.27-24.51Q146.27-25.24 146.01-25.88 145.74-26.51 145.26-26.99 144.78-27.47 144.15-27.73 143.52-28 142.78-28L142.78-28 132.28-28ZM165.58-13.99L165.58 0 158.58 0 158.58-35.01 165.58-35.01 165.58-21 179.57-21 179.57-35.01 186.58-35.01 186.58 0 179.57 0 179.57-13.99 165.58-13.99ZM227.37-17.36L227.37-17.36Q227.37-14.87 226.73-12.56 226.08-10.25 224.91-8.24 223.73-6.23 222.07-4.57 220.41-2.91 218.41-1.72 216.41-0.54 214.09 0.11 211.77 0.76 209.28 0.76L209.28 0.76Q206.79 0.76 204.48 0.11 202.18-0.54 200.16-1.72 198.15-2.91 196.49-4.57 194.83-6.23 193.64-8.24 192.46-10.25 191.81-12.56 191.17-14.87 191.17-17.36L191.17-17.36Q191.17-19.85 191.81-22.17 192.46-24.49 193.64-26.49 194.83-28.49 196.49-30.15 198.15-31.81 200.16-32.98 202.18-34.16 204.48-34.8 206.79-35.45 209.28-35.45L209.28-35.45Q211.77-35.45 214.09-34.8 216.41-34.16 218.41-32.98 220.41-31.81 222.07-30.15 223.73-28.49 224.91-26.49 226.08-24.49 226.73-22.17 227.37-19.85 227.37-17.36ZM220.41-17.36L220.41-17.36Q220.41-19.65 219.54-21.69 218.66-23.73 217.16-25.23 215.65-26.73 213.62-27.61 211.58-28.49 209.28-28.49L209.28-28.49Q206.96-28.49 204.94-27.61 202.91-26.73 201.4-25.23 199.88-23.73 199-21.69 198.12-19.65 198.12-17.36L198.12-17.36Q198.12-15.06 199-13.05 199.88-11.04 201.4-9.52 202.91-8.01 204.94-7.13 206.96-6.25 209.28-6.25L209.28-6.25Q211.58-6.25 213.62-7.13 215.65-8.01 217.16-9.52 218.66-11.04 219.54-13.05 220.41-15.06 220.41-17.36ZM238.97-35.01L238.97 0 231.96 0 231.96-35.01 238.97-35.01ZM259.47-28L252.47-28 252.47-13.99 259.47-13.99Q260.91-13.99 262.18-14.54 263.45-15.09 264.4-16.04 265.36-16.99 265.91-18.27 266.45-19.56 266.45-21L266.45-21Q266.45-22.44 265.91-23.72 265.36-25 264.4-25.95 263.45-26.9 262.18-27.45 260.91-28 259.47-28L259.47-28ZM252.47-7.01L252.47 0 245.46 0 245.46-35.01 259.47-35.01Q261.4-35.01 263.18-34.51 264.97-34.01 266.52-33.09 268.07-32.18 269.35-30.9 270.63-29.61 271.54-28.05 272.46-26.49 272.96-24.71 273.46-22.92 273.46-21L273.46-21Q273.46-19.19 273.01-17.48 272.56-15.77 271.72-14.23 270.87-12.7 269.65-11.4 268.43-10.11 266.92-9.16L266.92-9.16 270.8 0 263.35 0 260.3-7.06 252.47-7.01Z" opacity="1" transform="matrix(1,0,0,1,0,0)" fill="#F47427" class="wordmark-text-0" data-fill-palette-color="primary" id="text-0"></path></svg></g></svg></g></svg></g></svg></g><g></g></svg></g><defs></defs></svg><rect width="395.52" height="124.3218083671515" fill="none" stroke="none" visibility="hidden"></rect></g></svg></g></svg>
                 </a>
                 <div class="footer-about-quote-mobileView">
                     <p>N.G. Bhoir Construction has been providing quality construction, civil, and earthwork services since 1991. Our commitment to excellence and safety sets us apart in the industry.</p>
@@ -1843,22 +1876,28 @@
             <p>&copy; 2024 N.G. Bhoir Construction | All Rights Reserved</p>
         </div>
     </footer>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.9/glider.min.js" integrity="sha512-4Y5AXHQsKRWv/566s/2jHXVBo2J4xNpapJJeaVGSbSEbHroH82lNN8y9dxbI9j5q0O9uzef5yRy5glBvfO941g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-    const hamburger = document.querySelector('.hamburger');
-    const nav = document.querySelector('nav');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        nav.classList.toggle('active');
-    });
-</script>
-
-<script>
-var swiper = new Swiper('.swiper-container', {
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/glider-js/1.7.9/glider.min.js" integrity="sha512-4Y5AXHQsKRWv/566s/2jHXVBo2J4xNpapJJeaVGSbSEbHroH82lNN8y9dxbI9j5q0O9uzef5yRy5glBvfO941g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init({
+             publicKey: "ZESgRRdtBKVhIhn5b",
+           });
+        })();
+    </script>
+    <script>
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav');
+    
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+    </script>
+    
+    <script>
+        var swiper = new Swiper('.swiper-container', {
             slidesPerView: 3,
             spaceBetween: 50,  // Add gap between slides
             centeredSlides: true,
@@ -1888,98 +1927,91 @@ var swiper = new Swiper('.swiper-container', {
                 }
             }
         });
-    // Image loading with skeleton
-    document.querySelectorAll('.project-image').forEach(img => {
-        img.onload = function () {
-            img.classList.add('loaded'); // Show the image when it's loaded
-            img.previousElementSibling.classList.remove('image-placeholder'); // Remove the skeleton
-        };
-    });
-</script>
-<!-- JavaScript for Skeleton Loading -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const images = document.querySelectorAll('.equipment-grid img');
-        images.forEach(img => {
-            img.onload = function() {
-                img.style.display = 'block'; // Show image once it loads
-                img.previousElementSibling.style.display = 'none'; // Hide skeleton
-            };
+    </script>
+    
+    <script>
+        function validateForm(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
 
-            // Simulate loading delay for demo purposes
-            setTimeout(() => {
-                img.src = img.getAttribute('src'); // Load image source
-            }, 1000);
-        });
-    });
-</script>
+            // Get form values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-<script>
-    function validateForm() {
-    // Get form values
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
+            // Get error message elements
+            const nameError = document.getElementById('name-error');
+            const emailError = document.getElementById('email-error');
+            const phoneError = document.getElementById('phone-error');
+            const messageError = document.getElementById('message-error');
 
-    // Get error message elements
-    const nameError = document.getElementById('name-error');
-    const emailError = document.getElementById('email-error');
-    const phoneError = document.getElementById('phone-error');
-    const messageError = document.getElementById('message-error');
+            let isValid = true;
 
-    let valid = true;
+            // Reset error messages
+            nameError.style.display = "none";
+            emailError.style.display = "none";
+            phoneError.style.display = "none";
+            messageError.style.display = "none";
 
-    // Validate name
-    if (name === "") {
-        nameError.textContent = "Please enter your name.";
-        nameError.style.display = "block";
-        document.getElementById('name').classList.add('error');
-        valid = false;
-    } else {
-        nameError.style.display = "none";
-        document.getElementById('name').classList.remove('error');
-    }
+            // Helper function to show error
+            function showError(element, errorElement, message) {
+                errorElement.textContent = message;
+                errorElement.style.display = "block";
+                element.classList.add('error');
+                isValid = false;
+            }
 
-    // Validate email with a regex pattern
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (email === "" || !emailPattern.test(email)) {
-        emailError.textContent = "Please enter a valid email address.";
-        emailError.style.display = "block";
-        document.getElementById('email').classList.add('error');
-        valid = false;
-    } else {
-        emailError.style.display = "none";
-        document.getElementById('email').classList.remove('error');
-    }
+            // Validation checks
+            if (!name) showError(document.getElementById('name'), nameError, "Please enter your name.");
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showError(document.getElementById('email'), emailError, "Please enter a valid email address.");
+            }
+            if (!phone || !/^\d{10}$/.test(phone)) {
+                showError(document.getElementById('phone'), phoneError, "Please enter a valid phone number (10 digits only).");
+            }
+            if (!message) showError(document.getElementById('message'), messageError, "Please enter your message.");
 
-    // Validate phone (must contain only digits and be at least 10 digits long)
-    const phonePattern = /^\d{10,}$/;
-    if (phone === "" || !phonePattern.test(phone)) {
-        phoneError.textContent = "Please enter a valid phone number (minimum 10 digits).";
-        phoneError.style.display = "block";
-        document.getElementById('phone').classList.add('error');
-        valid = false;
-    } else {
-        phoneError.style.display = "none";
-        document.getElementById('phone').classList.remove('error');
-    }
+            // If the form is valid, send the email using EmailJS
+            if (isValid) 
+            {
+                emailjs.send("service_387dvie", "template_vpiiq4m", {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message
+                })
+                .then((response) => {
+                    showPopup("Message sent successfully!", true);
+                    document.getElementById("contact-form").reset(); // Clear the form
+                })
+                .catch((error) => {
+                    showPopup("Failed to send message. Please try again.", false);
+                    console.error("Error:", error);
+                });
+            }
+        }
 
-    // Validate message
-    if (message === "") {
-        messageError.textContent = "Please enter your message.";
-        messageError.style.display = "block";
-        document.getElementById('message').classList.add('error');
-        valid = false;
-    } else {
-        messageError.style.display = "none";
-        document.getElementById('message').classList.remove('error');
-    }
+        // Function to show popup
+        function showPopup(message, isSuccess) {
+            const popup = document.getElementById("popup");
+            const popupMessage = document.getElementById("popup-message");
 
-    // Return whether the form is valid
-    return valid;
-}
+            // Set message and background color based on success or error
+            popupMessage.textContent = message;
+            popup.style.backgroundColor = isSuccess ? "#d4edda" : "#f8d7da"; // Green for success, red for error
+            popup.style.display = 'block';
+        }
 
-</script>
+        // Function to close popup
+        function closePopup() {
+            const popup = document.getElementById("popup");
+            popup.style.display = 'none';
+        }
+
+        // Attach the validateForm function to form submission
+        document.getElementById("contact-form").addEventListener("submit", validateForm);
+
+    </script>
+</body>
 
 </html>
